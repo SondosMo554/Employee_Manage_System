@@ -1,0 +1,92 @@
+﻿@page
+@model Employee_Manage_System.Pages.IndexModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/index.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" /> <!-- Add Open Sans font -->
+</head>
+<body>
+
+    <div id="error-container" class="error-container">
+        <div id="error-message" class="error-message">
+            @Model.ErrorMessage
+        </div>
+    </div>
+    <div id="success-container" class="success-container">
+        <div id="success-message" class="success-message">
+            @Model.SuccessMessage
+        </div>
+    </div>
+
+    <div class="video-background">
+        <video autoplay muted loop id="background-video">
+            <source src="~/videos/background_emp.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="content">
+            <form method="post" class="login-form">
+                <h2>Login</h2>
+
+                <div>
+                    <label for="Username">Username:</label>
+                    <input type="text" id="Username" name="Username" required />
+                </div>
+                <div>
+                    <label for="Password">Password:</label>
+                    <input type="password" id="Password" name="Password" required />
+                </div>
+                <div>
+                    <button type="submit">Login</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    <script>
+        function showError(message) {
+            const errorContainer = document.getElementById('error-container');
+            const errorMessage = document.getElementById('error-message');
+
+            errorMessage.textContent = message;
+            errorContainer.style.display = 'block';
+
+            setTimeout(() => {
+                errorContainer.style.display = 'none';
+            }, 2000);
+        }
+
+        @if (Model.ErrorMessage != null)
+        {
+            <text>
+                showError('@Model.ErrorMessage');
+            </text>
+        }
+
+            function showSuccess(message) {
+                const successContainer = document.getElementById('success-container');
+                const successMessage = document.getElementById('success-message');
+
+                successMessage.textContent = message;
+                successContainer.style.display = 'block';
+
+                setTimeout(() => {
+                    successContainer.style.display = 'none';
+                }, 2000);
+            }
+
+
+        @if (Model.SuccessMessage != null)
+        {
+            <text>
+                showSuccess('@Model.SuccessMessage');
+            </text>
+        }
+    </script>
+</body>
+</html>

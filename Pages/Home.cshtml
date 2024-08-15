@@ -1,0 +1,223 @@
+﻿@page
+@model Employee_Manage_System.Pages.HomeModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/home.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+    <div class="home-page">
+        <div class="main-content">
+            <div class="search-filter-row">
+                <div class="search-bar-container">
+                    <input type="text" name="query" placeholder="Search..." class="search-bar" />
+                    <button type="submit" class="search-icon">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+                <button class="filter-button" data-filter="gender">
+                    <span>Gender</span>
+                    <i class="bi bi-funnel filter-icon"></i>
+                </button>
+                <button class="filter-button" data-filter="employmentType">
+                    <span>Employment Type</span>
+                    <i class="bi bi-funnel filter-icon"></i>
+                </button>
+                <button class="filter-button" data-filter="position">
+                    <span>Position</span>
+                    <i class="bi bi-funnel filter-icon"></i>
+                </button>
+                <button class="filter-button" data-filter="department">
+                    <span>Department</span>
+                    <i class="bi bi-funnel filter-icon"></i>
+                </button>
+            </div>
+
+            <div class="dropdown-menu" id="genderDropdown">
+                <div class="dropdown-content">
+                    <label><input type="checkbox" name="gender" value="Male"> Male</label>
+                    <label><input type="checkbox" name="gender" value="Female"> Female</label>
+                    <div class="dropdown-buttons">
+                        <button class="apply-filter" data-filter="gender">OK</button>
+                        <button class="cancel-filter" data-filter="gender">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown-menu" id="employmentTypeDropdown">
+                <div class="dropdown-content">
+                    <label><input type="checkbox" name="employmentType" value="Full-time"> Full-time</label>
+                    <label><input type="checkbox" name="employmentType" value="Part-time"> Part-time</label>
+                    <label><input type="checkbox" name="employmentType" value="Contract"> Contract</label>
+                    <label><input type="checkbox" name="employmentType" value="Internship"> Internship</label>
+                    <div class="dropdown-buttons">
+                        <button class="apply-filter" data-filter="employmentType">OK</button>
+                        <button class="cancel-filter" data-filter="employmentType">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown-menu" id="positionDropdown">
+                <div class="dropdown-content">
+                    <label><input type="checkbox" name="position" value="Developer"> Developer</label>
+                    <label><input type="checkbox" name="position" value="Designer"> Designer</label>
+                    <label><input type="checkbox" name="position" value="Project Manager"> Project Manager</label>
+                    <label><input type="checkbox" name="position" value="Analyst"> Analyst</label>
+                    <label><input type="checkbox" name="position" value="Sales Representative"> Sales Representative</label>
+                    <label><input type="checkbox" name="position" value="Consultant"> Consultant</label>
+                    <label><input type="checkbox" name="position" value="HR Manager"> HR Manager</label>
+                    <label><input type="checkbox" name="position" value="Intern"> Intern</label>
+                    <div class="dropdown-buttons">
+                        <button class="apply-filter" data-filter="position">OK</button>
+                        <button class="cancel-filter" data-filter="position">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown-menu" id="departmentDropdown">
+                <div class="dropdown-content">
+                    <label><input type="checkbox" name="department" value="IT"> IT</label>
+                    <label><input type="checkbox" name="department" value="Marketing"> Marketing</label>
+                    <label><input type="checkbox" name="department" value="HR"> HR</label>
+                    <label><input type="checkbox" name="department" value="Finance"> Finance</label>
+                    <label><input type="checkbox" name="department" value="Sales"> Sales</label>
+                    <label><input type="checkbox" name="department" value="Consulting"> Consulting</label>
+                    <div class="dropdown-buttons">
+                        <button class="apply-filter" data-filter="department">OK</button>
+                        <button class="cancel-filter" data-filter="department">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-row">
+                <div class="left-actions">
+                    <form method="post" asp-page-handler="ExportToExcel">
+                        <button type="submit" class="icon-button">Generate Excel</button>
+                    </form>
+                    <form method="post" asp-page-handler="GenerateGraph">
+                        <button type="submit" class="icon-button">Generate Graph</button>
+                    </form>
+                </div>
+                <div class="right-actions">
+                    <a href="/create_employee" class="add-employee-button">Add a new employee</a>
+                </div>
+            </div>
+
+            <div class="content-container">
+                <div class="employee-table-container">
+                    <table class="employee-table">
+                        <thead>
+                            <tr>
+                                <th class="table-header">#</th>
+                                <th class="table-header">Employee ID</th>
+                                <th class="table-header">First Name</th>
+                                <th class="table-header">Last Name</th>
+                                <th class="table-header">Gender</th>
+                                <th class="table-header">Email</th>
+                                <th class="table-header">Phone no.</th>
+                                <th class="table-header">Employment Type</th>
+                                <th class="table-header">Position</th>
+                                <th class="table-header">Department</th>
+                                <th class="table-header">Date joined</th>
+                                <th class="table-header">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (var i = 0; i < Model.Employees.Count; i++)
+                            {
+                                var employee = Model.Employees[i];
+                                <tr>
+                                    <td class="table-cell">@(@i + 1)</td>
+                                    <td class="table-cell">@employee.EmployeeId</td>
+                                    <td class="table-cell">@employee.FirstName</td>
+                                    <td class="table-cell">@employee.LastName</td>
+                                    <td class="table-cell">@employee.Gender</td>
+                                    <td class="table-cell">@employee.Email</td>
+                                    <td class="table-cell">@employee.PhoneNo</td>
+                                    <td class="table-cell">@employee.EmploymentType</td>
+                                    <td class="table-cell">@employee.Position</td>
+                                    <td class="table-cell">@employee.Department</td>
+                                    <td class="table-cell">@employee.DateJoined.ToString("yyyy-MM-dd")</td>
+                                    <td class="table-cell action-cell">
+                                        <a href="/edit_employee/@employee.EmployeeId" class="edit-button">Edit</a>
+                                        <form method="post" asp-page-handler="Delete" asp-route-id="@employee.EmployeeId" style="display:inline;">
+                                            <button type="submit" class="delete-button">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+            const applyFilterButtons = document.querySelectorAll('.apply-filter');
+            const cancelFilterButtons = document.querySelectorAll('.cancel-filter');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const filterType = this.getAttribute('data-filter');
+                    const dropdownMenu = document.getElementById(`${filterType}Dropdown`);
+
+                    dropdownMenus.forEach(menu => {
+                        if (menu !== dropdownMenu) {
+                            menu.classList.remove('show');
+                        }
+                    });
+
+                    dropdownMenu.classList.toggle('show');
+                });
+            });
+
+            applyFilterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const filterType = this.getAttribute('data-filter');
+                    const checkboxes = document.querySelectorAll(`#${filterType}Dropdown input[type="checkbox"]`);
+                    const selectedValues = Array.from(checkboxes)
+                        .filter(checkbox => checkbox.checked)
+                        .map(checkbox => checkbox.value)
+                        .join(',');
+
+                    const urlParams = new URLSearchParams(window.location.search);
+                    urlParams.set(filterType, selectedValues);
+                    window.location.search = urlParams.toString();
+                });
+            });
+
+            cancelFilterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const filterType = this.getAttribute('data-filter');
+                    const dropdownMenu = document.getElementById(`${filterType}Dropdown`);
+                    dropdownMenu.classList.remove('show');
+                });
+            });
+
+            const deleteButtons = document.querySelectorAll('.delete-button');
+
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const employeeId = this.closest('form').getAttribute('asp-route-id');
+
+                    if (confirm('Are you sure you want to delete this employee?')) {
+                        this.closest('form').submit();
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</body>
+</html>

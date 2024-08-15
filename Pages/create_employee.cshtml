@@ -1,0 +1,98 @@
+﻿@page
+@model Employee_Manage_System.Pages.CreateEmployeeModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Employee</title>
+    <link rel="stylesheet" href="~/css/employee.css" />
+</head>
+<body>
+    <div class="create-employee-page">
+        <div class="main-content">
+            <a href="/Home" class="back-button"><i class="fas fa-arrow-left"></i></a>
+            <h1 class="header">Add a New Employee</h1>
+            <div class="form-container">
+                <form method="post">
+                    <div class="section">
+                        <h2>Personal Details</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label asp-for="Employee.FirstName">First Name</label>
+                                <input asp-for="Employee.FirstName" />
+                                <span asp-validation-for="Employee.FirstName"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Employee.LastName">Last Name</label>
+                                <input asp-for="Employee.LastName" />
+                                <span asp-validation-for="Employee.LastName"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Employee.Gender">Gender</label>
+                                <select asp-for="Employee.Gender" asp-items="Model.GenderOptions">
+                                    <option value="">Select Gender</option>
+                                </select>
+                                <span asp-validation-for="Employee.Gender"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2>Contact Details</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label asp-for="Employee.Email">Email</label>
+                                <input asp-for="Employee.Email" />
+                                <span asp-validation-for="Employee.Email"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Employee.PhoneNo">Phone No.</label>
+                                <input asp-for="Employee.PhoneNo" />
+                                <span asp-validation-for="Employee.PhoneNo"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2>Work Details</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label asp-for="Employee.EmploymentType">Employment Type</label>
+                                <select asp-for="Employee.EmploymentType" asp-items="Model.EmploymentTypeOptions">
+                                    <option value="">Select Employment Type</option>
+                                </select>
+                                <span asp-validation-for="Employee.EmploymentType"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Employee.Position">Position</label>
+                                <select asp-for="Employee.Position" asp-items="Model.PositionOptions">
+                                    <option value="">Select Position</option>
+                                </select>
+                                <span asp-validation-for="Employee.Position"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Employee.Department">Department</label>
+                                <select asp-for="Employee.Department" asp-items="Model.DepartmentOptions">
+                                    <option value="">Select Department</option>
+                                </select>
+                                <span asp-validation-for="Employee.Department"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Employee.DateJoined">Date Joined</label>
+                                <input asp-for="Employee.DateJoined" type="date" />
+                                <span asp-validation-for="Employee.DateJoined"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-container">
+                        <button type="submit" class="save-button">Save</button>
+                        <button type="reset" class="delete-button">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

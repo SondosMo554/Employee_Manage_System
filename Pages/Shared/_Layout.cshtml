@@ -1,0 +1,66 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Employee_Manage_System</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Employee_Manage_System.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm">
+            <div class="container d-flex justify-content-between align-items-center">
+                <a class="navbar-brand" href="/">
+                    <img src="~/images/logo.png" alt="Logo" width="100" height="50" />
+                </a>
+            </div>
+            <div class="d-flex align-items-center">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <span class="custom-navbar-text">
+                        You're logged in as @User.Identity.Name
+                    </span>
+                    <form action="/Account/Logout" method="post" class="ms-3 logout-form">
+                        <button type="submit" class="btn btn-outline-danger logout-button">Logout</button>
+                    </form>
+                }
+                else
+                {
+                    <span class="custom-navbar-text">
+                        Sophic Employee Management System
+                    </span>
+                }
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+        <footer>
+            <div class="footer-text">
+                ©2024 Copyright Sophic Automation Sdn Bhd. All Rights Reserved.
+            </div>
+        </footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

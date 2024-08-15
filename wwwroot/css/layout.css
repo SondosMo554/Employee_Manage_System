@@ -1,0 +1,106 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+header, footer {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background: rgba(30, 58, 123, 0.7);
+}
+
+header {
+    top: 0;
+}
+
+footer {
+    color: white; 
+    bottom: 0;
+    text-align: center; 
+    padding: 10px 0; 
+    font-size: 15px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+
+    .navbar .container, footer .container {
+        padding-left: 20px;
+        margin-left: 0;
+    }
+
+    .custom-navbar-text, footer .footer-text {
+        color: #FFB700;
+        font-size: 15px;
+        font-weight: 600;
+        white-space: nowrap;
+        padding-right: 20px;
+    }
+
+
+
+.error-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    background: red; 
+    border-bottom: 1px solid darkred; 
+    padding: 10px;
+    box-sizing: border-box; 
+    z-index: 1000; 
+    display: none; 
+}
+
+.error-message {
+    color: white;
+    font-size: 16px;
+    margin: 0;
+    text-align: center;
+}
+
+.success-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: green;
+    border-bottom: 1px solid darkgreen;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 1000;
+    display: none;
+}
+
+.success-message {
+    color: white;
+    font-size: 16px;
+    margin: 0;
+    text-align: center;
+}
+
+.logout-form {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-right: 20px;
+}
+
+.logout-button {
+    padding: 8px 16px; 
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: #FF0000; 
+    color: white;
+    border-radius: 0px;
+    cursor: pointer;
+}
+
+    .logout-button:hover {
+        background-color: #ab0000;
+    }
+
+    

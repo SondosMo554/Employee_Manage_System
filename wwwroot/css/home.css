@@ -1,0 +1,217 @@
+body {
+    background-color: #000E31;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+s
+.home-page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main-content {
+    flex: 1;
+    width: 100%;
+    padding: 20px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.filter-section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 20px; 
+    width: 300px; 
+}
+
+.filter-section h2 {
+    margin-top: 0;
+}
+
+.employee-table-container {
+    padding-left: 5px;
+    max-height: 525px;
+    overflow-y: auto;
+    margin: 20px 0;
+}
+
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff; /* White background for the table */
+}
+
+.table-header {
+    background-color: #70BED6; /* Blue header color */
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.table-cell {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    font-weight: 500;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.search-filter-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.search-bar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-left:5px;
+
+}
+
+.search-bar {
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    height: 40px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.search-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: #1E3A7B; /* Blue background */
+    color: #ffffff; /* White icon color */
+    border-radius: 0; /* Ensure no border-radius if you don't want any rounding */
+    padding: 0 10px; /* Adjust padding if needed */
+    cursor: pointer;
+    outline: none; /* Remove any default outline */
+    border: none; /* Ensure no border is applied */
+}
+
+    .search-icon i {
+        font-size: 20px; /* Adjust icon size if needed */
+    }
+
+.filter-button {
+    background-color: #1E3A7B;
+    color: #ffffff;
+    border: none;
+    padding: 8px 15px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+    .filter-button:hover {
+        background-color: #162e65;
+    }
+
+
+
+.filter-icon {
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.action-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.left-actions {
+    display: flex;
+    margin-left: 0;
+}
+
+    .left-actions .icon-button {
+        background-color: #374957;
+        color: #ffffff;
+        border: none;
+        padding: 8px 15px;
+        margin: 5px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+        .left-actions .icon-button:hover {
+            background-color: #28343e;
+        }
+
+.right-actions .add-employee-button {
+    background-color: #FFB700;
+    color: #ffffff;
+    border: none;
+    padding: 8px 15px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+    .right-actions .add-employee-button:hover {
+        background-color: #aa7a00;
+    }
+
+.edit-button,
+.delete-button {
+    border: none;
+    color: #ffffff;
+    padding: 7px 10px; 
+    margin: 5px; 
+    cursor: pointer;
+    font-size: 12px; 
+    box-sizing: border-box; 
+    text-decoration: none;
+    display: inline-block;
+    text-align: center; 
+}
+.edit-button {
+    background-color: #1BD703;
+    text-decoration: none;
+}
+
+.delete-button {
+    background-color: #FF4D4D;
+    text-decoration: none;
+}
+
+.edit-button:hover {
+    background-color: #14b400;
+    color: #ffffff;
+}
+
+.delete-button:hover {
+    background-color: #ab0000;
+}
+
+
